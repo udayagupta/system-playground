@@ -86,3 +86,9 @@
   }
 
 }
+
+.save-file-avatar {
+  background: url(./sprites/tiles/avatar_placeholder.png) no-repeat;
+  background-size: cover;
+  
+}

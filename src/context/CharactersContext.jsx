@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { formateDate } from '../utils/helpers';
+import { useNotifications } from './NotificationsContext';
 
 const STORAGE_KEY = "systems-playerground.characters";
 const isValidCharacter = (character) =>
@@ -20,6 +21,7 @@ export const CharactersProvider = ({ children }) => {
       return [];
     }
   });
+  
 
   const addCharacter = (character) => {
     if (!isValidCharacter(character)) return { success: false, message: "Some fields are empty" };
@@ -29,13 +31,13 @@ export const CharactersProvider = ({ children }) => {
       return [...prev, { ...character, hp: 100, level: 1, cash: 1200, dateCreated: formateDate() }];
     })
 
-    return { success: true, message: "Character Created!" }
+    return { success: true, message: `Character Created!` }
   };
 
   const removeCharacter = (characterId) => {
-    setCharacters((prev) => prev.filter((character) => character.id !== characterId));
 
-    return { success: true, message: `${characterId} has been removed` }
+    setCharacters((prev) => prev.filter((character) => character.id !== characterId));
+    return { success: true, message: `${characterId} has been removed`, type: "character" };
   };
 
   const updateCharacter = (id, update) => { };

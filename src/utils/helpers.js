@@ -7,7 +7,7 @@ export const getRandomGreeting = (selectedAvatar) => {
     const randomIndex = Math.floor(Math.random() * (max - min + 1)) + min;
     const greetings = avatars[selectedAvatarIndex].greetings;
     
-    return greetings[randomIndex];
+    return greetings[randomIndex] || "I think something went wrong here...";
     
 }
 
@@ -20,5 +20,5 @@ export const formateDate = () => {
         day: "numeric"
     };
 
-    return date.toLocaleDateString(undefined, options)
+    return date.toLocaleDateString(undefined, options);
 }

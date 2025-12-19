@@ -12,3 +12,19 @@ export const scaleAnimations = {
         ease: "easeInOut"
     }
 }
+
+export const notificationsAnimations = {
+    initial: {
+        translateY: -60
+    },
+    animate: {
+        translateY: 0
+    },
+    exit: {
+        translateY: -60,
+    },
+    transition: {
+        duration: 0.5,
+        ease: "easeInOut"
+    }
+}
