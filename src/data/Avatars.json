@@ -1,0 +1,38 @@
+[
+  {
+    "id": "avatar_0001",
+    "path": "./sprites/avatars/avatar_0001.png",
+    "name": "School Boy",
+    "greetings": [
+      "Me? You chose me?",
+      "Alright! I won’t mess this up.",
+      "Guess I’m coming with you!",
+      "I’ll try to keep up, promise.",
+      "Heh… this feels like the start of something."
+    ]
+  },
+  {
+    "id": "avatar_0002",
+    "path": "./sprites/avatars/avatar_0002.png",
+    "name": "Sad Boy :(",
+    "greetings": [
+      "Oh… you picked me?",
+      "I didn’t think anyone would choose me",
+      "Are you sure? I mean… okay.",
+      "I’ll follow. Just don’t leave me behind.",
+      "Maybe this time will be different."
+    ]
+  },
+  {
+    "id": "avatar_0003",
+    "path": "./sprites/avatars/avatar_0003.png",
+    "name": "Grandma",
+    "greetings": [
+      "Ah, you’ve chosen wisely.",
+      "Come now, let’s not waste time.",
+      "I’ve walked many roads. One more won’t hurt.",
+      "Good. Stick close and listen.",
+      "Heh… reminds me of old days."
+    ]
+  }
+]
