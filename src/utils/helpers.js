@@ -20,5 +20,8 @@ export const formateDate = () => {
         day: "numeric"
     };
 
-    return date.toLocaleDateString(undefined, options);
+    return {
+        actualDate: date.toLocaleDateString(),
+        formattedDate: date.toLocaleDateString(undefined, options)
+    };
 }

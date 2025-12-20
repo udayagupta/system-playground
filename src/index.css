@@ -75,10 +75,19 @@
 
 .input-box {
   /* @apply bg-blackish-100 text-yellowish-100 rounded-md; */
-  @apply flex gap-0 py-1 flex-col;
+  @apply flex gap-3 py-1 items-center;
+
+  & p {
+    width: 70px
+  }
 
   & input {
-    @apply border border-blackish-100 rounded-sm py-1 pt-2 px-3;
+    @apply border border-blackish-100 rounded-sm py-1 pt-2 px-3 h-10;
+  }
+
+  & input:active, input:focus {
+    @apply bg-blackish-100 text-yellowish-100 outline-0 transition duration-300;
+
   }
 
   & input:active {

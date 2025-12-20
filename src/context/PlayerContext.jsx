@@ -2,24 +2,24 @@ import { createContext, useState, useContext } from "react";
 
 export const PlayerContext = createContext();
 
-export const PlayerProvider = ({children}) => {
-    const [player, setPlayer] = useState(null);
+export const PlayerProvider = ({ children }) => {
+  const [player, setPlayer] = useState(null);
 
-    const setCurrentPlayer = (player) => {
-        if (!player) return;
-        setPlayer(player);
-    }
+  const setCurrentPlayer = (player) => {
+    if (!player) return;
+    setPlayer(player);
+  }
 
-    const value = {
-        player,
-        setCurrentPlayer
-    }
+  const value = {
+    player,
+    setCurrentPlayer
+  }
 
-    return (
-        <PlayerContext.Provider value={value}>
-            {children}
-        </PlayerContext.Provider>
-    )
+  return (
+    <PlayerContext.Provider value={value}>
+      {children}
+    </PlayerContext.Provider>
+  )
 };
 
 

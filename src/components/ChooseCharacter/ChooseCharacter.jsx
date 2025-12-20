@@ -1,8 +1,6 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useCharacters } from '../../context/CharactersContext'
-import { motion } from 'motion/react';
 import { CiCirclePlus } from "react-icons/ci";
-import { MdDelete } from "react-icons/md";
 import CreateCharacter from '../CreateCharacter/CreateCharacter';
 import SaveLi from './SaveLi';
 
@@ -16,15 +14,18 @@ const ChooseCharacter = () => {
     setToggleForm((prev) => !prev);
   };
 
-  const confirm = (character) => {
-    const result = addCharacter(character);
-    addNotification(result);
+  const confirmCharacter = (character) => {
+    addCharacter(character)
     setToggleForm(false);
+  }
+
+  const close = () => {
+    setToggleForm((prev) => false);
   }
 
   return (
     <div ref={ref} className='bg-blackish-100 relative min-h-screen'>
-      {toggleForm && <CreateCharacter confirm={confirm}/>}
+      {toggleForm && <CreateCharacter confirmCharacter={confirmCharacter} close={close}/>}
       <h2 className='text-3xl text-center text-yellowish-100 pt-3'>Your Saves</h2>
 
       <ul className='flex flex-col gap-4 px-4 py-2'>
@@ -32,6 +33,7 @@ const ChooseCharacter = () => {
           <CiCirclePlus className='h-15 w-15' />
           <p>Create a new character</p>
         </li>
+        {!characters.length && <li className='rounded-md flex gap-5 bg-blackish-100 text-center text-yellowish-100 text-2xl'><p className='m-auto'>No saves, create a new one.</p></li>}
         {
           characters.map((character) => (
             <SaveLi key={character.id} character={character} />

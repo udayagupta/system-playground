@@ -45,7 +45,7 @@ const Notifications = () => {
             animate="animate"
             transition="transition"
             key={Math.random()}
-            className="absolute  tracking-wider   left-1/2 -translate-x-1/2 translate-y-1/4 px-5 py-2 text-2xl bg-blackish-100 text-yellowish-100 rounded-md"
+            className="fixed  tracking-wider z-9999 border  left-1/2 -translate-x-1/2 translate-y-1/4 px-5 py-2 text-2xl bg-blackish-100 text-yellowish-100 rounded-md"
           >
             {n.message}
           </motion.li>

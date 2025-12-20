@@ -5,12 +5,12 @@ import { useNotifications } from './NotificationsContext';
 const STORAGE_KEY = "systems-playerground.characters";
 const isValidCharacter = (character) =>
   character &&
-  character.id &&
   character.name?.trim() &&
   character.avatar &&
   character.favThing?.trim();
 
 export const CharactersContext = createContext();
+
 
 export const CharactersProvider = ({ children }) => {
   const [characters, setCharacters] = useState(() => {
@@ -22,16 +22,18 @@ export const CharactersProvider = ({ children }) => {
     }
   });
   
+  const { addNotification } = useNotifications();
 
   const addCharacter = (character) => {
-    if (!isValidCharacter(character)) return { success: false, message: "Some fields are empty" };
+    console.log(character);
 
+    if (!isValidCharacter(character)) return addNotification({ success: false, message: "Some fields are empty" });
     setCharacters((prev) => {
       if (prev.some((c) => c.id === character.id)) return prev;
-      return [...prev, { ...character, hp: 100, level: 1, cash: 1200, dateCreated: formateDate() }];
+      return [...prev, { ...character, hp: 100, level: 1, cash: 1200, dateCreated: formateDate(), id: crypto.randomUUID() }];
     })
 
-    return { success: true, message: `Character Created!` }
+    return addNotification({ success: true, message: `Character Created!` });
   };
 
   const removeCharacter = (characterId) => {
@@ -44,7 +46,7 @@ export const CharactersProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(characters));
-    console.log(characters);
+    // console.log(characters);
   }, [characters]);
 
   const value = {

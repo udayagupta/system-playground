@@ -14,7 +14,6 @@ function App() {
 
   return (
    <main style={style} className="relative border- border-pink-950">
-      {/* <CreateCharacter /> */}
       <Notifications />
       <ChooseCharacter />
    </main>

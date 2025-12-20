@@ -5,15 +5,26 @@ import App from './App.jsx'
 import { SettingsProvider } from './context/SettingsContext.jsx'
 import { CharactersProvider } from './context/CharactersContext.jsx'
 import { NotificationsProvider } from './context/NotificationsContext.jsx'
+import { PlayerProvider } from './context/PlayerContext.jsx'
+import { createBrowserRouter } from 'react-router-dom'
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: 
+//   }
+// ])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <SettingsProvider>
-      <CharactersProvider>
-        <NotificationsProvider>
-          <App />
-        </NotificationsProvider>
-      </CharactersProvider>
+      <NotificationsProvider>
+        <CharactersProvider>
+          <PlayerProvider>
+            <App />
+          </PlayerProvider>
+        </CharactersProvider>
+      </NotificationsProvider>
     </SettingsProvider>
   </StrictMode>,
 )

@@ -8,13 +8,13 @@ const SaveLi = ({ character }) => {
         <img src={`./sprites/avatars/${character.avatar}.png`} className=' rounded-sm border h-28 w-full bg-blackish-100' alt="" style={{ imageRendering: "pixelated" }} />
       </div>
       <div className='flex justify-between w-full'>
-        <div>
+        <div className="cursor-text">
           <p>🎮 Name: {character.name}</p>
           <p>🎯 Level: {character.level}</p>
-          <p>🗓️ Date: {character.dateCreated}</p>
+          <p>🗓️ Date: {character.dateCreated.formattedDate}</p>
           <p>🎁 Fav. Thing: {character.favThing}</p>
         </div>
-        <div onClick={() => removeCharacter(character.id)} title='Delete' className='flex justify-center items-center'>
+        <div onClick={() => removeCharacter(character.id)} title='Delete' className='border px-2 rounded-md hover:bg-blackish-100 hover:text-yellowish-100 flex justify-center items-center'>
           <MdDelete className='my-auto text-3xl' />
         </div>
       </div>
