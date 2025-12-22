@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 
-const ProgressBar = ({ className, max, current, barColor, barShadowColor, label }) => {
+const ProgressBar = ({ className, max, current, barColor, barShadowColor, label, width }) => {
   // take care of the applied effects from player context and provide the feedback on the health bar
   const fullWidth = 42;
   const percent = current / max;
@@ -11,7 +11,7 @@ const ProgressBar = ({ className, max, current, barColor, barShadowColor, label 
   // exp: #f9a31b, #fa6a0a
 
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={350} viewBox="0 -0.5 48 8" shape-rendering="crispEdges">
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" width={width} viewBox="0 -0.5 48 8" shape-rendering="crispEdges">
       <metadata>Made with Pixels to Svg https://codepen.io/shshaw/pen/XbxvNj</metadata>
       <path stroke="#171c4d" d="M2 0h3M6 0h2M9 0h2M13 0h1M15 0h1M17 0h2M20 0h1M22 0h2M25 0h5M31 0h4M36 0h3M40 0h6M1 1h2M45 1h1M1 2h1M0 3h2M45 3h1M47 3h1M0 4h3M0 5h1M46 5h2M1 6h1M45 6h2M2 7h2M5 7h2M9 7h1M12 7h3M16 7h1M19 7h1M22 7h2M25 7h2M28 7h3M33 7h5M40 7h1M42 7h1M44 7h2" />
       <path stroke="#171c4c" d="M5 0h1M8 0h1M11 0h1M14 0h1M35 0h1M2 2h1M47 2h1M2 3h1M47 4h1M2 5h1M2 6h1M8 7h1M11 7h1M17 7h1M20 7h1M32 7h1M38 7h1M41 7h1" />

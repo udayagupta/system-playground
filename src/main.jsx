@@ -6,12 +6,22 @@ import { SettingsProvider } from './context/SettingsContext.jsx'
 import { CharactersProvider } from './context/CharactersContext.jsx'
 import { NotificationsProvider } from './context/NotificationsContext.jsx'
 import { PlayerProvider } from './context/PlayerContext.jsx'
-import { createBrowserRouter } from 'react-router-dom'
+// import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+// import Home from './pages/Home.jsx'
+// import Layout from './Layout.jsx'
 
 // const router = createBrowserRouter([
 //   {
 //     path: "/",
-//     element: 
+//     element: (
+//       <Layout />
+//     ),
+//     children: [
+//       {
+//         index: true,
+//         element: <Home />
+//       }
+//     ]
 //   }
 // ])
 
@@ -22,6 +32,7 @@ createRoot(document.getElementById('root')).render(
         <CharactersProvider>
           <PlayerProvider>
             <App />
+            {/* <RouterProvider router={router}/> */}
           </PlayerProvider>
         </CharactersProvider>
       </NotificationsProvider>

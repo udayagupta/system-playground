@@ -78,7 +78,7 @@
   @apply flex gap-3 py-1 items-center;
 
   & p {
-    width: 70px
+    width: 60px
   }
 
   & input {
@@ -99,5 +99,25 @@
 .save-file-avatar {
   background: url(./sprites/tiles/avatar_placeholder.png) no-repeat;
   background-size: cover;
+  
+}
+
+.menu-button {
+  /* transition: 300ms; */
+  cursor: pointer;
+  /* background-color: var(--text-color);
+  color: var(--bg-color); */
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.menu-button:hover {
+  scale: 1.1;
+  text-shadow: -3px 3px 0px black;
+}
+
+.menu-button:active {
+  scale: 0.9;
+  transition: 300ms;
   
 }

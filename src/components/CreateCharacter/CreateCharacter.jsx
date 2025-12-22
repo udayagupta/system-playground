@@ -4,7 +4,9 @@ import AvatarSelector from "./AvatarSelector";
 import { IoMdClose } from "react-icons/io";
 import { motion } from "motion/react";
 import { scaleAnimations } from "../../utils/animations";
-const CreateCharacter = ({ confirmCharacter, close }) => {
+import { useKeyAction } from "../../hooks/useKeyAction";
+
+const CreateCharacter = ({ confirmCharacter, close, toggleForm }) => {
   const [currentCharacter, setCurrentCharacter] = useState({
     name: "",
     avatar: "avatar_0001",
@@ -30,6 +32,8 @@ const CreateCharacter = ({ confirmCharacter, close }) => {
 
   }
 
+  useKeyAction("Escape", close, toggleForm);
+
   useEffect(() => {
     if (!currentCharacter.avatar) return;
     setShowGreeting(true);
@@ -51,19 +55,19 @@ const CreateCharacter = ({ confirmCharacter, close }) => {
 
       {/* Modal */}
       <motion.div
-      variants={scaleAnimations}
-      initial="initial"
-      animate="animate"
-      transition="transition"
-        className="border-2 p-10   flex flex-col gap-5 rounded-lg justify-center
-               fixed left-1/2 -translate-x-1/2 translate-y-1/4
+        variants={scaleAnimations}
+        initial="initial"
+        animate="animate"
+        transition="transition"
+        className="border-2 p-8   flex flex-col gap-5 rounded-lg justify-center
+               fixed left-1/2 -translate-x-1/2 translate-y-1/5
                max-w-max items-center text-blackish-100 bg-yellowish-100
-               border-blackish-100 z-50 pointer-events-auto"
+               border-blackish-100 z-50 pointer-events-auto terraria"
       >
         <button onClick={close} className="fixed hover:bg-blackish-100 hover:text-yellowish-100 transition duration-200 top-5 right-5 p-2 rounded-md">
-          <IoMdClose className="cursor-pointer  text-2xl"/>
+          <IoMdClose className="cursor-pointer  text-2xl" />
         </button>
-        <h2 className="text-2xl terraria tracking-wide text-center">
+        <h2 className="text-2xl font-semibold tracking-wide text-center">
           Create Character
         </h2>
 
@@ -81,13 +85,13 @@ const CreateCharacter = ({ confirmCharacter, close }) => {
             </div>
 
             <div className="input-box">
-              <p>Favourite <br /> Thing</p>
+              <p>Fav.<br /> Thing</p>
               <input type="text" value={currentCharacter.favThing} onChange={(e) => updateValue("favThing", e.target.value)} />
             </div>
           </div>
         </section>
 
-        <section className="w-full bg-blackish-100 text-yellowish-100 text-xl rounded-md">
+        <section className="w-full border-2 border-transparent bg-blackish-100 text-yellowish-100 text-xl rounded-md hover:bg-yellowish-100 hover:text-blackish-100 hover:border-blackish-100">
           <button onClick={() => confirmCharacter(currentCharacter)} className="w-full p-2 cursor-pointer">
             Confirm
           </button>

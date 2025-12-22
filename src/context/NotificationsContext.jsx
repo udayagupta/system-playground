@@ -2,22 +2,7 @@ import { createContext, useState, useEffect, useContext } from 'react'
 
 const NotificationsContext = createContext();
 
-const noti1 = {
-  type: "error",
-  message: "error notification",
-  origin: "NotificationsContext"
-}
-
-const noti2 = {
-  type: "form",
-  message: "fields are empty",
-  origin: "CreateCharacter"
-}
-
-
-
 export const NotificationsProvider = ({ children }) => {
-  // const [notifications, setNotifications] = useState([noti1, noti2]);
   const [notifications, setNotifications] = useState([]);
 
   const addNotification = (notification) => {

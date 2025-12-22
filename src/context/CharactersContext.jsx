@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { formateDate } from '../utils/helpers';
-import { useNotifications } from './NotificationsContext';
+import { formateDate, isCharacterPresent } from '../utils/helpers';
+// import { usePlayer } from './PlayerContext';
 
 const STORAGE_KEY = "systems-playerground.characters";
 const isValidCharacter = (character) =>
@@ -13,6 +13,7 @@ export const CharactersContext = createContext();
 
 
 export const CharactersProvider = ({ children }) => {
+  // const { setCurrentPlayer } = usePlayer();
   const [characters, setCharacters] = useState(() => {
     try {
       const characters = localStorage.getItem(STORAGE_KEY);
@@ -21,32 +22,43 @@ export const CharactersProvider = ({ children }) => {
       return [];
     }
   });
-  
-  const { addNotification } = useNotifications();
 
-  const addCharacter = (character) => {
+
+  const addCharacter = (character, setCurrentPlayer) => {
     console.log(character);
 
-    if (!isValidCharacter(character)) return addNotification({ success: false, message: "Some fields are empty" });
+    if (!isValidCharacter(character)) return { success: false, message: "Some fields are empty" };
+
+    const characterObj = {
+      ...character,
+      hp: 100, 
+      level: 1, 
+      cash: 1200, 
+      dateCreated: formateDate(), 
+      id: crypto.randomUUID()
+    }
+
     setCharacters((prev) => {
       if (prev.some((c) => c.id === character.id)) return prev;
-      return [...prev, { ...character, hp: 100, level: 1, cash: 1200, dateCreated: formateDate(), id: crypto.randomUUID() }];
+      return [...prev, characterObj];
     })
 
-    return addNotification({ success: true, message: `Character Created!` });
+    setCurrentPlayer(characterObj);
+    return { success: true, message: `Character Created!` };
   };
 
-  const removeCharacter = (characterId) => {
+  const removeCharacter = (characterId, name) => {
+
+    if (!isCharacterPresent(characters, characterId)) return { success: false, message: `${name} was not found!`, type: "character" }
 
     setCharacters((prev) => prev.filter((character) => character.id !== characterId));
-    return { success: true, message: `${characterId} has been removed`, type: "character" };
+    return { success: true, message: `${name} has been removed`, type: "character" };
   };
 
   const updateCharacter = (id, update) => { };
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(characters));
-    // console.log(characters);
   }, [characters]);
 
   const value = {
